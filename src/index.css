@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme { 
+  --font-dm-sans: DM Sans, sans-serif;
+}
+
+html {
+  font-synthesis: none;
+  font-family: var(--font-dm-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../src/assets/fonts/DM_Sans/DMSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../src/assets/fonts/DM_Sans/DMSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../src/assets/fonts/DM_Sans/DMSans-Regular.ttf') format('truetype');
+}
