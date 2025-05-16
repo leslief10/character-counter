@@ -2,8 +2,23 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme { 
+@theme {
   --font-dm-sans: DM Sans, sans-serif;
+
+  /*Shoutout to https://www.color-name.com/ for the ~dramatic~ color names*/
+  --color-dark-black: #12131a;
+  --color-dark-gunmetal: #21222c;
+  --color-gunmetal: #2a2b37;
+  --color-arsenic: #404254;
+  --color-bright-gray: #e4e4ef;
+  --color-antiflash-white: #f2f2f7;
+  --color-pale-violet: #d3a0fa;
+  --color-lavander-floral: #c27cf8;
+  --color-orange-peel: #ff9f00;
+  --color-coral: #fe8159;
+  --color-sinopia: #da3701;
+
+  --spacing-4-half-xl: 61.875rem;
 }
 
 html {
