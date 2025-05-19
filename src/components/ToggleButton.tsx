@@ -17,8 +17,8 @@ const ToggleButton = ({ initialTheme, onThemeChange }: ToggleButtonProps = {}): 
 
   useEffect(() => {
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e: MediaQueryListEvent): void => {
-      const newTheme = e.matches;
+    const handleChange = (event: MediaQueryListEvent): void => {
+      const newTheme = event.matches;
       setIsDark(newTheme);
       onThemeChange?.(newTheme ? 'dark' : 'light');
     };
@@ -37,7 +37,13 @@ const ToggleButton = ({ initialTheme, onThemeChange }: ToggleButtonProps = {}): 
 
   return (
     <button
-      onClick={() => setIsDark((prev) => !prev)}
+      onClick={() => {
+        setIsDark((prev) => {
+          const newTheme = !prev;
+          onThemeChange?.(newTheme ? 'dark' : 'light');
+          return newTheme;
+        });
+      }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className="flex flex-row justify-center items-center w-8 h-8 rounded-md bg-antiflash-white dark:bg-gunmetal hover:cursor-pointer"
     >
