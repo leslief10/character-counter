@@ -18,7 +18,13 @@
   --color-coral: #fe8159;
   --color-sinopia: #da3701;
 
+  --text-4xxl: 2.5rem;
+  --text-4xxl--line-height: 100%;
+  --text-6xxl: 4rem;
+  --text-6xxl--line-height: 100%;
+
   --spacing-4-half-xl: 61.875rem;
+  --spacing-50: 12.5rem;
 }
 
 html {

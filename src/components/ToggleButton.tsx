@@ -45,7 +45,7 @@ const ToggleButton = ({ initialTheme, onThemeChange }: ToggleButtonProps = {}): 
         });
       }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      className="flex flex-row justify-center items-center w-8 h-8 rounded-md bg-antiflash-white dark:bg-gunmetal hover:cursor-pointer"
+      className="flex flex-row justify-center items-center w-8 h-8 rounded-md bg-antiflash-white dark:bg-gunmetal hover:cursor-pointer md:w-11 md:h-11"
     >
       {isDark ? <SunIcon className="w-5 h-5 text-white" /> : <MoonIcon className="w-5 h-5 text-dark-black" />}
     </button>
