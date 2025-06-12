@@ -1,11 +1,7 @@
 import type { JSX } from 'react';
-import type { Theme } from './types/theme';
+import type { HeaderProps } from '../common/types';
 import { LogoIcon } from './icons/LogoIcon';
 import { ToggleButton } from './ToggleButton';
-
-interface HeaderProps {
-  defaultTheme?: Theme;
-}
 
 const Header = ({ defaultTheme }: HeaderProps): JSX.Element => {
   return (

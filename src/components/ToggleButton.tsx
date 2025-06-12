@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import type { JSX } from 'react';
 import { MoonIcon } from './icons/MoonIcon';
 import { SunIcon } from './icons/SunIcon';
-import type { Theme } from './types/theme';
-
-interface ToggleButtonProps {
-  initialTheme?: Theme;
-  onThemeChange?: (theme: Theme) => void;
-}
+import type { ToggleButtonProps } from '../common/types';
 
 const ToggleButton = ({ initialTheme, onThemeChange }: ToggleButtonProps = {}): JSX.Element => {
   const [isDark, setIsDark] = useState<boolean>(() => {
