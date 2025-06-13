@@ -14,12 +14,14 @@ describe('ToggleButton', () => {
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
     expect(document.documentElement).not.toHaveClass('dark');
+    expect(document.documentElement).toHaveClass('light');
   });
 
   it('should respect initialTheme prop', () => {
     const initialTheme: Theme = 'dark';
     render(<ToggleButton initialTheme={initialTheme} />);
     expect(document.documentElement).toHaveClass('dark');
+    expect(document.documentElement).not.toHaveClass('light');
   });
 
   it('should toggle theme when clicked', () => {
