@@ -6,14 +6,15 @@ const TextOptions = (): JSX.Element => {
   const [excludeSpaces, setExcludeSpaces] = useState(false);
   const [charLimit, setCharLimit] = useState(false);
   const [newCharLimit, setNewCharLimit] = useState(300);
-  const { text, setTextWithoutSpaces, setMaxLength } = useText();
+  const { text, setText, initialText, setInitialText, setMaxLength } = useText();
 
   const handleRemoveSpaces = (event: ChangeEvent<HTMLInputElement>): void => {
-    const newText = event.target.checked ? text.replaceAll(' ', '') : text;
+    const newText = event.target.checked ? text.replaceAll(' ', '') : initialText;
     console.log('newText', newText, newText.length);
 
     setExcludeSpaces(event.target.checked);
-    setTextWithoutSpaces(newText);
+    setInitialText(text);
+    setText(newText);
   };
 
   const checkCharacterLimit = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -33,7 +34,7 @@ const TextOptions = (): JSX.Element => {
             id="spaces"
             name="spaces"
             type="checkbox"
-            className="mb-0.5 accent-pale-violet"
+            className="mb-0.5 accent-pale-violet focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
             checked={excludeSpaces}
             onChange={handleRemoveSpaces}
           />
@@ -44,7 +45,7 @@ const TextOptions = (): JSX.Element => {
             id="char-limit"
             name="char-limit"
             type="checkbox"
-            className="mb-0.5 accent-pale-violet"
+            className="mb-0.5 accent-pale-violet focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
             checked={charLimit}
             onChange={checkCharacterLimit}
           />
@@ -58,7 +59,7 @@ const TextOptions = (): JSX.Element => {
                 id="char-limit-amount"
                 name="char-limit-amount"
                 type="number"
-                className="w-full pl-3 text-base text-dark-black dark:text-bright-gray rounded-md border border-arsenic bg-antiflash-white dark:bg-dark-black"
+                className="w-full pl-3 text-base text-dark-black dark:text-bright-gray rounded-md border border-arsenic bg-antiflash-white dark:bg-dark-black focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
                 value={newCharLimit}
                 onChange={updateCharacterLimit}
               />

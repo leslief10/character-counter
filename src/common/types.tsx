@@ -14,8 +14,8 @@ export interface ToggleButtonProps {
 export interface TextContextType {
   text: string;
   setText: (text: string) => void;
-  textWithoutSpaces: string;
-  setTextWithoutSpaces: (text: string) => void;
+  initialText: string;
+  setInitialText: (text: string) => void;
   maxLength: number;
   setMaxLength: (length: number) => void;
 }

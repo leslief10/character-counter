@@ -11,6 +11,8 @@ const TextAnalyzer = (): JSX.Element => {
 
   console.log('text:', text, text.length);
 
+  console.log('char length:', maxLength);
+
   return (
     <div className="w-full px-4 py-3 md:px-8">
       <form onSubmit={(e) => e.preventDefault()}>
@@ -21,9 +23,12 @@ const TextAnalyzer = (): JSX.Element => {
           name="text-analyzer"
           onChange={handleChange}
           placeholder="Start typing here... (or paste your text)"
-          className="w-full min-h-50 p-5 text-xl text-gunmetal dark:text-bright-gray tracking-tight placeholder:tracking-tight rounded-xl border-2 border-bright-gray dark:border-dark-gunmetal bg-antiflash-white dark:bg-gunmetal placeholder:text-gunmetal dark:placeholder:text-bright-gray"
+          className="w-full min-h-50 p-5 text-xl text-gunmetal dark:text-bright-gray tracking-tight placeholder:tracking-tight rounded-xl border-2 border-bright-gray dark:border-dark-gunmetal bg-antiflash-white dark:bg-gunmetal placeholder:text-gunmetal dark:placeholder:text-bright-gray invalid:border invalid:border-sinopia dark:invalid:border-coral focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
           value={text}
         />
+        <div>
+          <p>Limit reached! Your text exceeds {maxLength} characters.</p>
+        </div>
         <TextOptions />
       </form>
     </div>

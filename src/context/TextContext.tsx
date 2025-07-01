@@ -6,11 +6,11 @@ const TextContext = createContext<TextContextType | undefined>(undefined);
 
 const TextProvider = ({ children }: TextProviderProps): JSX.Element => {
   const [text, setText] = useState<string>('');
-  const [textWithoutSpaces, setTextWithoutSpaces] = useState<string>('');
+  const [initialText, setInitialText] = useState<string>('');
   const [maxLength, setMaxLength] = useState<number>(300);
 
   return (
-    <TextContext.Provider value={{ text, setText, textWithoutSpaces, setTextWithoutSpaces, maxLength, setMaxLength }}>
+    <TextContext.Provider value={{ text, setText, initialText, setInitialText, maxLength, setMaxLength }}>
       {children}
     </TextContext.Provider>
   );
