@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Header } from './Header';
-import type { Theme } from '../common/types';
+import type { Theme } from '../../common/types';
 
 describe('Header', () => {
   beforeEach(() => {

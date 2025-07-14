@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ToggleButton } from './ToggleButton';
-import type { Theme } from '../common/types';
+import type { Theme } from '../../common/types';
 
 describe('ToggleButton', () => {
   beforeEach(() => {

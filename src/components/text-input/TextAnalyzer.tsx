@@ -1,5 +1,6 @@
 import type { ChangeEvent, JSX } from 'react';
-import { useText } from '../hooks/useText';
+import { useText } from '../../hooks/useText';
+import { InfoIcon } from '../icons/InfoIcon';
 import { TextOptions } from './TextOptions';
 
 const TextAnalyzer = (): JSX.Element => {
@@ -26,9 +27,14 @@ const TextAnalyzer = (): JSX.Element => {
           className="w-full min-h-50 p-5 text-xl text-gunmetal dark:text-bright-gray tracking-tight placeholder:tracking-tight rounded-xl border-2 border-bright-gray dark:border-dark-gunmetal bg-antiflash-white dark:bg-gunmetal placeholder:text-gunmetal dark:placeholder:text-bright-gray invalid:border invalid:border-sinopia dark:invalid:border-coral focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
           value={text}
         />
-        <div>
-          <p>Limit reached! Your text exceeds {maxLength} characters.</p>
-        </div>
+        {text.length > maxLength ? (
+          <div className="flex md:items-center gap-2">
+            <InfoIcon className=" text-sinopia dark:text-coral mt-1 md:mb-0.5 md:mt-0" />
+            <p className="text-base leading-snug text-sinopia dark:text-coral">
+              Limit reached! Your text exceeds {maxLength} characters.
+            </p>
+          </div>
+        ) : null}
         <TextOptions />
       </form>
     </div>

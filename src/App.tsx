@@ -1,6 +1,7 @@
 import { TextProvider } from './context/TextContext';
-import { Header } from './components/Header';
-import { TextAnalyzer } from './components/TextAnalyzer';
+import { Header } from './components/header/Header';
+import { TextAnalyzer } from './components/text-input/TextAnalyzer';
+import { TextMetrics } from './components/text-stats/TextMetrics';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             Analyze your text in real-time.
           </h1>
           <TextAnalyzer />
+          <TextMetrics />
         </main>
       </TextProvider>
     </>
