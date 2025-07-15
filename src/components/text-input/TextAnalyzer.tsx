@@ -4,30 +4,27 @@ import { InfoIcon } from '../icons/InfoIcon';
 import { TextOptions } from './TextOptions';
 
 const TextAnalyzer = (): JSX.Element => {
-  const { text, setText, maxLength } = useText();
+  const { setText, processedText, maxLength } = useText();
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     setText(event.target.value);
   };
-
-  console.log('text:', text, text.length);
-
-  console.log('char length:', maxLength);
 
   return (
     <div className="w-full px-4 py-3 md:px-8">
       <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="text-analyzer" />
         <textarea
+          className="w-full min-h-50 p-5 text-xl text-gunmetal dark:text-bright-gray tracking-tight placeholder:tracking-tight rounded-xl border-2 border-bright-gray dark:border-dark-gunmetal bg-antiflash-white dark:bg-gunmetal placeholder:text-gunmetal dark:placeholder:text-bright-gray invalid:border invalid:border-sinopia dark:invalid:border-coral focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
           id="text-analyzer"
           maxLength={maxLength}
           name="text-analyzer"
           onChange={handleChange}
           placeholder="Start typing here... (or paste your text)"
-          className="w-full min-h-50 p-5 text-xl text-gunmetal dark:text-bright-gray tracking-tight placeholder:tracking-tight rounded-xl border-2 border-bright-gray dark:border-dark-gunmetal bg-antiflash-white dark:bg-gunmetal placeholder:text-gunmetal dark:placeholder:text-bright-gray invalid:border invalid:border-sinopia dark:invalid:border-coral focus-within:outline-2 focus-within:outline-lavander-floral focus-visible:outline-2 focus-visible:outline-lavander-floral"
-          value={text}
+          spellCheck="false"
+          value={processedText}
         />
-        {text.length > maxLength ? (
+        {processedText.length > maxLength ? (
           <div className="flex md:items-center gap-2">
             <InfoIcon className=" text-sinopia dark:text-coral mt-1 md:mb-0.5 md:mt-0" />
             <p className="text-base leading-snug text-sinopia dark:text-coral">

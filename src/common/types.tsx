@@ -14,10 +14,11 @@ export interface ToggleButtonProps {
 export interface TextContextType {
   text: string;
   setText: (text: string) => void;
-  initialText: string;
-  setInitialText: (text: string) => void;
+  processedText: string;
   maxLength: number;
   setMaxLength: (length: number) => void;
+  excludeSpaces: boolean;
+  setExcludeSpaces: (length: boolean) => void;
 }
 
 export interface TextProviderProps {
