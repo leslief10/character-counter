@@ -4,7 +4,7 @@ import { InfoIcon } from '../icons/InfoIcon';
 import { TextOptions } from './TextOptions';
 
 const TextAnalyzer = (): JSX.Element => {
-  const { setText, processedText, maxLength } = useText();
+  const { text, setText, processedText, maxLength } = useText();
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     setText(event.target.value);
@@ -22,7 +22,7 @@ const TextAnalyzer = (): JSX.Element => {
           onChange={handleChange}
           placeholder="Start typing here... (or paste your text)"
           spellCheck="false"
-          value={processedText}
+          value={text}
         />
         {processedText.length > maxLength ? (
           <div className="flex md:items-center gap-2">

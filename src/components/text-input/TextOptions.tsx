@@ -1,11 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { ChangeEvent, JSX } from 'react';
 import { useText } from '../../hooks/useText';
 
 const TextOptions = (): JSX.Element => {
   const [charLimit, setCharLimit] = useState<boolean>(false);
   const [newCharLimit, setNewCharLimit] = useState<number | null>(300);
-  const { setMaxLength, excludeSpaces, setExcludeSpaces } = useText();
+  const [readingTime, setReadingTime] = useState<string>('0 minute');
+  const { text, setMaxLength, excludeSpaces, setExcludeSpaces } = useText();
+
+  useEffect(() => {
+    const words = text
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0);
+    // 238WPM is the average silent reading speed per a study shared in https://thereadtime.com/
+    const minutes = Math.ceil(words.length / 238);
+    setReadingTime(`${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`);
+  }, [text]);
 
   const handleRemoveSpaces = (event: ChangeEvent<HTMLInputElement>): void => {
     setExcludeSpaces(event.target.checked);
@@ -26,6 +37,7 @@ const TextOptions = (): JSX.Element => {
       setNewCharLimit(Number(newLimit));
     }
   };
+
   return (
     <div className="flex flex-col pt-2 md:flex-row md:justify-between">
       <fieldset className="flex flex-col md:flex-row md:gap-6">
@@ -62,7 +74,7 @@ const TextOptions = (): JSX.Element => {
           ) : null}
         </div>
       </fieldset>
-      <span className="text-base text-dark-black dark:text-bright-gray">Approx. reading time: &gt; 0 min</span>
+      <span className="text-base text-dark-black dark:text-bright-gray">Approx. reading time: {readingTime}</span>
     </div>
   );
 };
