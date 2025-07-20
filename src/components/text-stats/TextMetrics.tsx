@@ -1,30 +1,18 @@
-import { useState, useEffect } from 'react';
 import type { JSX } from 'react';
 import { useText } from '../../hooks/useText';
 import { LetterFrequency } from './LetterFrequency';
 
 const TextMetrics = (): JSX.Element => {
-  const [totalChar, setTotalChar] = useState<number>(0);
-  const [wordCount, setWordCount] = useState<number>(0);
-  const [sentenceCount, setSentenceCount] = useState<number>(0);
   const { text, processedText, excludeSpaces } = useText();
 
-  useEffect(() => {
-    setTotalChar(processedText.length);
-  }, [processedText]);
+  const totalChar = processedText.length;
 
-  useEffect(() => {
-    const words = text
-      .trim()
-      .split(/\s+/)
-      .filter((word) => word.length > 0);
-    setWordCount(words.length);
-  }, [text]);
+  const wordCount = text
+    .trim()
+    .split(/\s+/)
+    .filter((word) => word.length > 0).length;
 
-  useEffect(() => {
-    const sentences = text.split(/[.!?]+(?:\s+|$)/).filter((sentence) => sentence.trim().length > 0);
-    setSentenceCount(sentences.length);
-  }, [text]);
+  const sentenceCount = text.split(/[.!?]+(?:\s+|$)/).filter((sentence) => sentence.trim().length > 0).length;
 
   return (
     <div className="w-full px-4 py-3 md:px-8">

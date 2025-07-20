@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { ChangeEvent, JSX } from 'react';
 import { useText } from '../../hooks/useText';
 
 const TextOptions = (): JSX.Element => {
   const [charLimit, setCharLimit] = useState<boolean>(false);
   const [newCharLimit, setNewCharLimit] = useState<number | null>(300);
-  const [readingTime, setReadingTime] = useState<string>('0 minute');
   const { text, setMaxLength, excludeSpaces, setExcludeSpaces } = useText();
 
-  useEffect(() => {
-    const words = text
-      .trim()
-      .split(/\s+/)
-      .filter((word) => word.length > 0);
-    // 238WPM is the average silent reading speed per a study shared in https://thereadtime.com/
-    const minutes = Math.ceil(words.length / 238);
-    setReadingTime(`${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`);
-  }, [text]);
+  const wordsLength = text
+    .trim()
+    .split(/\s+/)
+    .filter((word) => word.length > 0).length;
+  // 238WPM is the average silent reading speed per a study shared in https://thereadtime.com/
+  const minutes = Math.ceil(wordsLength / 238);
+  const readingTime = `${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
 
   const handleRemoveSpaces = (event: ChangeEvent<HTMLInputElement>): void => {
     setExcludeSpaces(event.target.checked);
