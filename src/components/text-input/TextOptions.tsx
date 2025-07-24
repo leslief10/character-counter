@@ -7,13 +7,13 @@ const TextOptions = (): JSX.Element => {
   const [newCharLimit, setNewCharLimit] = useState<number | null>(300);
   const { text, setMaxLength, excludeSpaces, setExcludeSpaces } = useText();
 
-  const wordsLength = text
+  const wordsLength: number = text
     .trim()
     .split(/\s+/)
     .filter((word) => word.length > 0).length;
   // 238WPM is the average silent reading speed per a study shared in https://thereadtime.com/
-  const minutes = Math.ceil(wordsLength / 238);
-  const readingTime = `${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
+  const minutes: number = Math.ceil(wordsLength / 238);
+  const readingTime: string = `${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
 
   const handleRemoveSpaces = (event: ChangeEvent<HTMLInputElement>): void => {
     setExcludeSpaces(event.target.checked);

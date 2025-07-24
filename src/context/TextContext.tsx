@@ -9,7 +9,7 @@ const TextProvider = ({ children }: TextProviderProps): JSX.Element => {
   const [maxLength, setMaxLength] = useState<number>(300);
   const [excludeSpaces, setExcludeSpaces] = useState<boolean>(false);
 
-  const processedText = useMemo(() => {
+  const processedText: string = useMemo(() => {
     return excludeSpaces ? text.replaceAll(' ', '') : text;
   }, [text, excludeSpaces]);
 

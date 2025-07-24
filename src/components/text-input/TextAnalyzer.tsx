@@ -6,7 +6,7 @@ import { TextOptions } from './TextOptions';
 const TextAnalyzer = (): JSX.Element => {
   const { text, setText, processedText, maxLength } = useText();
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
+  const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     setText(event.target.value);
   };
 
@@ -19,7 +19,7 @@ const TextAnalyzer = (): JSX.Element => {
           id="text-analyzer"
           maxLength={maxLength}
           name="text-analyzer"
-          onChange={handleChange}
+          onChange={handleTextChange}
           placeholder="Start typing here... (or paste your text)"
           spellCheck="false"
           value={text}
