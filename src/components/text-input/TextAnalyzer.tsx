@@ -24,11 +24,13 @@ const TextAnalyzer = (): JSX.Element => {
           spellCheck="false"
           value={text}
         />
-        {processedText.length > maxLength ? (
+        {processedText.length >= maxLength ? (
           <div className="flex md:items-center gap-2">
             <InfoIcon className=" text-sinopia dark:text-coral mt-1 md:mb-0.5 md:mt-0" />
             <p className="text-base leading-snug text-sinopia dark:text-coral">
-              Limit reached! Your text exceeds {maxLength} characters.
+              {processedText.length === maxLength
+                ? `Limit reached! Your text is exactly ${maxLength} characters.`
+                : `Limit reached! Your text exceeds ${maxLength} characters.`}
             </p>
           </div>
         ) : null}

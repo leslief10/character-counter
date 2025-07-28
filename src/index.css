@@ -24,8 +24,9 @@
   --text-6xxl--line-height: 100%;
 
   --spacing-4-half-xl: 61.875rem;
-  --spacing-50: 12.5rem;
   --spacing-10-half: 2.625rem;
+  --spacing-50: 12.5rem;
+  --spacing-54: 13.25rem;
 }
 
 html {
@@ -90,6 +91,27 @@ input[type='checkbox']:focus {
 
 .button-outline:focus {
   outline: max(2px, 0.15em) solid var(--color-lavander-floral);
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+progress[value]::-webkit-progress-bar {
+  border-radius: 0.25rem;
+  background: transparent;
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 0.25rem;
+  background: var(--color-pale-violet);
+}
+progress[value]::-moz-progress-bar {
+  border-radius: 0.25rem;
+  background: var(--color-pale-violet);
 }
 
 @font-face {
